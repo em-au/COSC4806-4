@@ -15,15 +15,15 @@ if (!isset($_SESSION['auth'])) {
         <meta name="mobile-web-app-capable" content="yes">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0px">
-  <div class="container-fluid" style="background-color: #add8e6;">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container">
     <a class="navbar-brand" href="/home">COSC 4806</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/home">Home</a>
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/reminders">Reminders</a>
+          <a class="nav-link active" href="/reminders">Reminders</a>
         </li>
 
       </ul>
