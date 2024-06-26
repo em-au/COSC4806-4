@@ -32,12 +32,9 @@
 			</div>
 			
 			<?php // Display error messages
-			if (isset($_SESSION['username_exists']) && ($_SESSION['username_exists'] == 0)) { ?>
-					<span style="color: red">Username does not exist</span>
+			if (isset($_SESSION['username_exists']) && ($_SESSION['username_exists'] == 0) || isset($_SESSION['password_incorrect'])) { ?>
+					<span style="color: red">Incorrect username or password</span>
 			 <?php }
-			 if (isset($_SESSION['password_incorrect'])) { ?>
-					<span style="color: red">Password is incorrect</span>
-			<?php } 
 				 unset($_SESSION['username_exists']);
 				 unset($_SESSION['password_incorrect']); 
 			?>
