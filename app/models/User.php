@@ -33,6 +33,7 @@ class User {
     
     if (password_verify($password, $rows['password'])) {
       $this->is_authenticated = true;
+      $_SESSION['user_id'] = $rows['id'];
     }
   }
 

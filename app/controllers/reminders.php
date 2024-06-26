@@ -12,10 +12,11 @@ class Reminders extends Controller {
     $this->view('reminders/create');
   }
 
-  public function add_reminder() {
+  public function create_reminder() {
+    $subject = $_REQUEST['subject'];
     $reminder = $this->model('Reminder');
-    // need a form (will look like user signup, just need subject)
-    // need user_id from table as a session variable so that you can add it to the reminders
+    $reminder->add_reminder($subject);
+    header('location: /reminders');
   }
 }
 

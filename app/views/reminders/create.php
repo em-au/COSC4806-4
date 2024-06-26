@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-sm-auto">
-        <form action="/reminders/add_reminder" method="post" style="width: 300px;">
+        <form action="/reminders/create_reminder" method="post" style="width: 300px;">
         <fieldset>
             <div class="form-group" style="text-align: left">
                 <label for="subject">Description</label>
