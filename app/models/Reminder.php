@@ -14,7 +14,8 @@ class Reminder {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
-
+  // Can can get_all_completed_reminders() and display them too?
+  
   public function add_reminder($subject) {
     $db = db_connect();
     $statement = $db->prepare("INSERT INTO reminders (user_id, subject) VALUES (:user_id, :subject)");

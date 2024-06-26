@@ -10,11 +10,10 @@
 
 <div class="row">
     <div class="col-sm-auto">
-        <form action="/reminders/create_reminder" method="post" style="width: 300px;">
+        <form action="/reminders/create_reminder" method="post" style="width: 500px;">
         <fieldset>
             <div class="form-group" style="text-align: left">
-                <label for="subject">Description</label>
-                <input required type="text" class="form-control" name="subject">
+                <input required type="text" class="form-control" name="subject" placeholder="Description">
             </div>
             <br>
             <a href="/reminders"><button type="button" class="btn btn-light">Cancel</button></a>
