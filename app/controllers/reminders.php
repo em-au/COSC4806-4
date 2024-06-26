@@ -8,7 +8,7 @@ class Reminders extends Controller {
     $this->view('reminders/index', ['reminders' => $reminders]);
   }
 
-  public function create() {
+  public function create_form() {
     $this->view('reminders/create');
   }
 
@@ -19,9 +19,16 @@ class Reminders extends Controller {
     header('location: /reminders');
   }
 
-  public function update_reminder() {
-    $id = $_REQUEST['id'];
-    echo $id . " test";
+  public function update_form($id) {
+    $id = $_GET['id'];
+    $reminder = $this->model('Reminder');
+    $subject = $reminder->get_subject_by_id($id);
+    $this->view('reminders/update', ['subject' => $subject]); // Pass the subject to prepopulate the form
+  }
+
+  public function update_reminder($id) {
+    $id = $_GET['id'];
+    // send the subject 
   }
 }
 

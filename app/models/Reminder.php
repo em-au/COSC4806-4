@@ -15,6 +15,15 @@ class Reminder {
     return $rows;
   }
   // Can can get_all_completed_reminders() and display them too?
+
+  public function get_subject_by_id($id) {
+    $db = db_connect();
+    $statement = $db->prepare("SELECT * FROM reminders WHERE id = :id;");
+    $statement->bindParam(':id', $id);
+    $statement->execute();
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    return $rows['subject'];
+  }
   
   public function add_reminder($subject) {
     $db = db_connect();

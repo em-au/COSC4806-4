@@ -13,7 +13,7 @@
             <form action="/reminders/update_reminder" method="post" style="width: 500px;">
             <fieldset>
                 <div class="form-group" style="text-align: left">
-                    <input required type="text" class="form-control" name="subject" placeholder="Description">
+                    <input required type="text" class="form-control" name="subject" value="<? echo $data['subject'] ?>" placeholder="Description">
                 </div>
                 <br>
                 <a href="/reminders"><button type="button" class="btn btn-light">Cancel</button></a>
@@ -23,6 +23,6 @@
       </div>
     </div>
     <br>
-
+        
     <?php require_once 'app/views/templates/footer.php' ?>
 
