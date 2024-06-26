@@ -1,7 +1,5 @@
-<footer class="footer" style="position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+<footer class="footer" style="position: relative;
+    margin-top: auto;
     text-align: center;"
     <p>Copyright &copy; <?php echo date('Y'); ?> </p>
 </footer>

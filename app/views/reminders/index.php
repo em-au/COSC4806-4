@@ -1,6 +1,6 @@
 <?php require_once 'app/views/templates/header.php' ?>
 <br>
-<div class="container">
+<div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
@@ -21,7 +21,6 @@
         </tr>
         <? } ?>
 
-    </table>
-                                                  
-
+    </table>                                             
+</div>
 <?php require_once 'app/views/templates/footer.php' ?>
