@@ -12,7 +12,7 @@ class User {
 
   public function test () {
     $db = db_connect();
-    $statement = $db->prepare("select * from users;");
+    $statement = $db->prepare("SELECT * FROM users;");
     $statement->execute();
     $rows = $statement->fetch(PDO::FETCH_ASSOC);
     return $rows;
@@ -26,7 +26,7 @@ class User {
     $_SESSION['username'] = $username;
     $username = strtolower($username);
     $db = db_connect();
-        $statement = $db->prepare("select * from users WHERE username = :name;");
+        $statement = $db->prepare("SELECT * FROM users WHERE username = :name;");
         $statement->bindValue(':name', $username);
         $statement->execute();
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ class User {
   public function add_user($username, $password) {
     $db = db_connect();
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $statement = $db->prepare("INSERT into users (username, password) VALUES (:username, :password)");
+    $statement = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
     $statement->bindValue(':username', $username);
     $statement->bindValue(':password', $hashed_password);
     $statement->execute();

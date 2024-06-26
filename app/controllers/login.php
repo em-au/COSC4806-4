@@ -22,6 +22,7 @@ class Login extends Controller {
 			$user->authenticate($username, $password); 
 			if ($user->is_authenticated) {
 				$_SESSION['auth'] = 1;
+				//$_SESSION['user_id'] = $rows['user_id'];
 
 				unset($_SESSION['failedAuth']);
 				header('location: /home');
