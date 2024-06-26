@@ -46,6 +46,7 @@
   </div>
 </div>
 <footer>
+    <br>
     <a href="/login">Already have an account? Log in here.</a>
 </footer>
 <br>

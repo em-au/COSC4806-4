@@ -48,6 +48,7 @@
 		</form> 
 	</div>
 </div>
+<br>
 <a href="/create">Don't have an account? Sign up now.</a>
 
 <?php
