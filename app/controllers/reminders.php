@@ -19,7 +19,7 @@ class Reminders extends Controller {
     header('location: /reminders');
   }
 
-  public function update_form($id) { // does this need even a param?
+  public function update_form() {
     $id = $_GET['id'];
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);
@@ -32,7 +32,7 @@ class Reminders extends Controller {
     $this->view('reminders/update', ['reminder' => $reminder]); // Pass the subject to prepopulate the form
   }
 
-  public function update_reminder($id) { // does this even need a param?
+  public function update_reminder() { 
     $id = $_REQUEST['id'];
     $subject = $_REQUEST['subject'];
     $reminder = $this->model('Reminder');
@@ -40,7 +40,7 @@ class Reminders extends Controller {
     header('location: /reminders');
   }
 
-  public function delete() { // does this even need a parameter if i redefine $id?
+  public function delete() { 
     $id = $_GET['id'];
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);                        
