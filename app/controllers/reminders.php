@@ -18,6 +18,11 @@ class Reminders extends Controller {
     $reminder->add_reminder($subject);
     header('location: /reminders');
   }
+
+  public function update_reminder() {
+    $id = $_REQUEST['id'];
+    echo $id . " test";
+  }
 }
 
 
