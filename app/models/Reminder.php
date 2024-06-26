@@ -37,7 +37,14 @@ class Reminder {
     $db = db_connect();
     $statement = $db->prepare("UPDATE reminders SET subject = :subject WHERE id = :id");
     $statement->bindParam(':subject', $subject);
-    $statement->bindValue(':id', $id);
+    $statement->bindParam(':id', $id);
+    $statement->execute();
+  }
+
+  public function delete_reminder($id) {
+    $db = db_connect();
+    $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
+    $statement->bindParam(':id', $id);
     $statement->execute();
   }
 

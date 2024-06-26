@@ -16,7 +16,11 @@
         <tr>
             <td><?php echo $reminder['subject']; ?></td>
             <!-- <td><a href="/reminders/update_reminder/<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a></td> -->
-            <td><a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a></td>
+            <td>
+                <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a>
+                <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+            </td>
+
         </tr>
             <!-- // echo "<p>" . $reminder['subject'] . ' <a href="/reminders/update">update</a>
             //<a href="/reminders/delete">delete</a> </p>';
