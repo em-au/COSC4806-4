@@ -23,6 +23,12 @@ class Reminders extends Controller {
     $id = $_GET['id'];
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);
+    // Check if reminder exists and if it belongs to the user
+    if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
+      $_SESSION['reminder_error'] = 1;
+      echo "error"; die; // TO DO: need to change this to display error in the view
+    }
+
     $this->view('reminders/update', ['reminder' => $reminder]); // Pass the subject to prepopulate the form
   }
 
