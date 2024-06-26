@@ -4,7 +4,7 @@ class Reminders extends Controller {
   
   public function index() {
     $reminder = $this->model('Reminder');
-    $reminders = $reminder->get_all_reminders();
+    $reminders = $reminder->get_incomplete_reminders();
     $this->view('reminders/index', ['reminders' => $reminders]);
   }
 
@@ -49,7 +49,7 @@ class Reminders extends Controller {
       $_SESSION['reminder_error'] = 1;
       echo "error"; die; // TO DO: need to change this to display error in the view
     }                       
-    $r->delete_reminder($id);
+    $r->mark_reminder_deleted($id);
     header('location: /reminders');                        
   }
 }

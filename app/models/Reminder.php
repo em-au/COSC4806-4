@@ -14,6 +14,16 @@ class Reminder {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
+
+  public function get_incomplete_reminders() {
+    $db = db_connect();
+    $statement = $db->prepare("SELECT * FROM reminders WHERE user_id = :user_id AND deleted = 0;");
+    $statement->bindParam(':user_id', $_SESSION['user_id']);
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+  }
+  
   // Can can get_all_completed_reminders() and display them too?
 
   public function get_reminder_by_id($id) {
@@ -41,9 +51,10 @@ class Reminder {
     $statement->execute();
   }
 
-  public function delete_reminder($id) {
+  public function mark_reminder_deleted($id) {
     $db = db_connect();
-    $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
+    //"DELETE FROM reminders WHERE id = :id"
+    $statement = $db->prepare("UPDATE reminders SET deleted = 1 WHERE id = :id");
     $statement->bindParam(':id', $id);
     $statement->execute();
   }
