@@ -21,14 +21,17 @@ class Reminders extends Controller {
 
   public function update_form($id) {
     $id = $_GET['id'];
-    $reminder = $this->model('Reminder');
-    $subject = $reminder->get_subject_by_id($id);
-    $this->view('reminders/update', ['subject' => $subject]); // Pass the subject to prepopulate the form
+    $r = $this->model('Reminder');
+    $reminder = $r->get_reminder_by_id($id);
+    $this->view('reminders/update', ['reminder' => $reminder]); // Pass the subject to prepopulate the form
   }
 
   public function update_reminder($id) {
-    $id = $_GET['id'];
-    // send the subject 
+    $id = $_REQUEST['id'];
+    $subject = $_REQUEST['subject'];
+    $reminder = $this->model('Reminder');
+    $reminder->edit_reminder($id, $subject);
+    header('location: /reminders');
   }
 }
 

@@ -10,10 +10,10 @@
 
     <div class="row">
         <div class="col-sm-auto">
-            <form action="/reminders/update_reminder" method="post" style="width: 500px;">
+            <form action="/reminders/update_reminder/?id=<?php echo $data['reminder']['id']; ?>" method="post" style="width: 500px;">
             <fieldset>
                 <div class="form-group" style="text-align: left">
-                    <input required type="text" class="form-control" name="subject" value="<? echo $data['subject'] ?>" placeholder="Description">
+                    <input required type="text" class="form-control" name="subject" value="<? echo $data['reminder']['subject'] ?>" placeholder="Description">
                 </div>
                 <br>
                 <a href="/reminders"><button type="button" class="btn btn-light">Cancel</button></a>
