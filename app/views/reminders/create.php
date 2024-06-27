@@ -3,7 +3,7 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Create a reminder</h1>
+                <h2>Create a reminder</h2>
             </div>
         </div>
     </div>
