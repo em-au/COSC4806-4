@@ -12,8 +12,8 @@ class Reminders extends Controller {
     $reminder = $this->model('Reminder');
     $reminders = $reminder->get_completed_reminders();
     foreach($reminders as &$reminder) {
-      $reminder['created_at'] = date('F j, Y H:m', strtotime($reminder['created_at']));
-      $reminder['completed_at'] = date('F j, Y H:m', strtotime($reminder['completed_at']));
+      $reminder['created_at'] = date('F j, Y g:i a', strtotime($reminder['created_at']));
+      $reminder['completed_at'] = date('F j, Y g:i a', strtotime($reminder['completed_at']));
     }
     $this->view('reminders/completed', ['reminders' => $reminders]);
   }

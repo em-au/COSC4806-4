@@ -26,7 +26,7 @@ class Reminder {
 
   public function get_completed_reminders() {
     $db = db_connect();
-    $statement = $db->prepare("SELECT * FROM reminders WHERE user_id = :user_id AND completed = 1;");
+    $statement = $db->prepare("SELECT * FROM reminders WHERE user_id = :user_id AND completed = 1 ORDER BY completed_at DESC");
     $statement->bindParam(':user_id', $_SESSION['user_id']);
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);

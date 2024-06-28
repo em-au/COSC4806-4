@@ -1,24 +1,31 @@
 <?php require_once 'app/views/templates/header.php' ?>
 <br>
 <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Reminders</h1>
-                <p><a href="/reminders/create_form">Create a new reminder</a></p>
-                <p><a href="/reminders/completed_reminders">Previous reminders</a></p>
+    <div class="page-header" id="banner" style="width:50%">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <h2>Reminders</h2>
+            </div>
+            <div >
+                <a href="/reminders/completed_reminders"><button type="button" class="btn btn-outline-primary">Previous reminders</button></a>
+                <a href="/reminders/create_form"><button type="button" class="btn btn-primary">Add</button></a>
             </div>
         </div>
+
     </div>
-    <table class="table align-middle table-bordered" style="width: 50%">
+    <br>
+    <table class="table align-middle bottom-bordered" style="width: 50%;"> <!-- change width? -->
     <?php
+        if (empty($data['reminders'])) {
+            echo "You currently have no reminders!";
+        }
         foreach($data['reminders'] as $reminder) { ?>
         <tr>
             <td align="left"><?php echo $reminder['subject']; ?></td>
-            <td align="right" style="min-width: 300px;"> <!-- change to the right pixel size -->
-                <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button></a>
-                <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-success"><i class="fa-solid fa-check"></i></button></a>
-                <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+            <td align="right" style="min-width: 200px;"> <!-- change to the right pixel size -->
+                <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button></a>
+                <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-success"><i class="fa-solid fa-check"></i></button></a>
+                <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></a>
             </td>
         </tr>
         <? } ?>

@@ -4,7 +4,7 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Reminders</h1>
+                <h2>Completed Reminders</h2>
                 <p><a href="/reminders/index">Go to back to current reminders</a></p>
             </div>
         </div>
@@ -16,6 +16,9 @@
             <th>Completed</th>
         </tr>
     <?php
+        if (empty($data['reminders'])) {
+            echo "You have no completed reminders!";
+        }
         foreach($data['reminders'] as $reminder) { ?>
         <tr>
             <td><?php echo $reminder['subject']; ?></td>
