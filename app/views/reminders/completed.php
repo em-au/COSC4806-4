@@ -11,6 +11,7 @@
             </div>
         </div>
     </div>
+    <br>
     <?php 
         if (empty($data['reminders'])) { ?>
             <div class="alert alert-warning" role="alert">You have no completed reminders!</div>

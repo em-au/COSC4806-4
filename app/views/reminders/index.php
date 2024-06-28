@@ -7,7 +7,7 @@
                 <h2>Reminders</h2>
             </div>
             <div >
-                <a href="/reminders/completed_reminders"><button type="button" class="btn btn-outline-primary">Previous reminders</button></a>
+                <a href="/reminders/completed_reminders"><button type="button" class="btn btn-outline-primary">Completed reminders</button></a>
                 <a href="/reminders/create_form"><button type="button" class="btn btn-primary">Add</button></a>
             </div>
         </div>
