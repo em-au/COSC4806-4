@@ -1,30 +1,36 @@
 <?php require_once 'app/views/templates/header.php' ?>
 <br>
 <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
+    <div class="page-header" id="banner" style="width:700px">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
                 <h2>Completed Reminders</h2>
-                <p><a href="/reminders/index">Go to back to current reminders</a></p>
+            </div>
+            <div >
+                <a href="/reminders"><button type="button" class="btn btn-outline-primary">Return to current reminders</button></a>
             </div>
         </div>
     </div>
-    <table class="table align-middle table-striped">
-        <tr>
-            <th>Reminder</th>
-            <th>Created</th>
-            <th>Completed</th>
-        </tr>
+    <?php 
+        if (empty($data['reminders'])) { ?>
+            <div class="alert alert-warning" role="alert">You have no completed reminders!</div>
+        <? }
+        else { ?>
+            <table class="table align-middle" style="width:700px">
+                <tr>
+                    <th>Reminder</th>
+                    <th>Created</th>
+                    <th>Completed</th>
+                </tr>
+        <? } ?>
     <?php
-        if (empty($data['reminders'])) {
-            echo "You have no completed reminders!";
-        }
         foreach($data['reminders'] as $reminder) { ?>
         <tr>
-            <td><?php echo $reminder['subject']; ?></td>
+            <td align="left" style="width:300px"><?php echo $reminder['subject']; ?></td>
             <td><?php echo $reminder['created_at']; ?></td>
             <td><?php echo $reminder['completed_at']; ?></td>
         </tr>
+
         <? } ?>
 
     </table>                                             

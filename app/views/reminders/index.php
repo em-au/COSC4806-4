@@ -1,8 +1,8 @@
 <?php require_once 'app/views/templates/header.php' ?>
 <br>
 <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-    <div class="page-header" id="banner" style="width:50%">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="page-header" id="banner" style="width:600px">
+        <div style="display: flex; align-items: center; justify-content: space-between">
             <div>
                 <h2>Reminders</h2>
             </div>
@@ -14,15 +14,15 @@
 
     </div>
     <br>
-    <table class="table align-middle bottom-bordered" style="width: 50%;"> <!-- change width? -->
+    <table class="table align-middle bottom-bordered" style="width:600px"> <!-- change width? -->
     <?php
-        if (empty($data['reminders'])) {
-            echo "You currently have no reminders!";
-        }
+        if (empty($data['reminders'])) { ?>
+            <div class="alert alert-warning" role="alert">You currently have no reminders!</div>
+        <? }
         foreach($data['reminders'] as $reminder) { ?>
         <tr>
-            <td align="left"><?php echo $reminder['subject']; ?></td>
-            <td align="right" style="min-width: 200px;"> <!-- change to the right pixel size -->
+            <td align="left" style="width:400px"><?php echo $reminder['subject']; ?></td>
+            <td align="right" style="width: 200px;"> <!-- change to the right pixel size -->
                 <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button></a>
                 <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-success"><i class="fa-solid fa-check"></i></button></a>
                 <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></a>
