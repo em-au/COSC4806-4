@@ -16,13 +16,13 @@
         <tr>
             <td align="left"><?php echo $reminder['subject']; ?></td>
             <td align="right" style="min-width: 300px;"> <!-- change to the right pixel size -->
-                <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a>
-                <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-success">Mark completed</button></a>
-                <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button></a>
+                <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-success"><i class="fa-solid fa-check"></i></button></a>
+                <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
             </td>
         </tr>
         <? } ?>
 
-    </table>                                             
+    </table>
 </div>
 <?php require_once 'app/views/templates/footer.php' ?>

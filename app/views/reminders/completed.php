@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <table class="table align-middle table-bordered">
+    <table class="table align-middle table-striped">
         <tr>
             <th>Reminder</th>
             <th>Created</th>

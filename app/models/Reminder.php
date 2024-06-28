@@ -32,8 +32,6 @@ class Reminder {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
-  
-  // Can can get_all_completed_reminders() and display them too?
 
   public function get_reminder_by_id($id) {
     $db = db_connect();

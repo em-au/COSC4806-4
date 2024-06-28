@@ -8,6 +8,7 @@ if (!isset($_SESSION['auth'])) {
     <head>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="icon" href="/favicon.png">
+        <script src="https://kit.fontawesome.com/1a161933ae.js" crossorigin="anonymous"></script>
         <title>COSC 4806</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width">

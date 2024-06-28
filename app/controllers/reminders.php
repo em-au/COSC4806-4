@@ -68,15 +68,23 @@ class Reminders extends Controller {
     $id = $_GET['id'];
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);                        
-    // Check if reminder exists and if it belongs to the user
-    if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
-      $_SESSION['reminder_error'] = 1;
-      echo "error"; die; // TO DO: need to change this to display error in the view
-    }                       
+    $this->is_operation_valid($id);
+    if (isset($_SESSION['reminder_error'])) {
+        echo "error"; die; // TO DO: redirect back to current page and display error message
+    }
     $r->mark_reminder_completed($id);
     header('location: /reminders'); 
   }
 
+  // Check if reminder exists and if it belongs to the user performing operation
+  public function is_operation_valid($id) {
+    $r = $this->model('Reminder');
+    $reminder = $r->get_reminder_by_id($id);
+    if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
+      $_SESSION['reminder_error'] = 1;
+      //echo "error"; die; // TO DO: need to change this to display error in the view
+    }
+  }
 }
 
 
