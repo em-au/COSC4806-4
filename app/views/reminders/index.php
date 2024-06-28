@@ -14,7 +14,7 @@
 
     </div>
     <br>
-    <table class="table align-middle bottom-bordered" style="width:600px"> <!-- change width? -->
+    <table class="table align-middle bottom-bordered" style="width:600px"> 
     <?php
         if (empty($data['reminders'])) { ?>
             <div class="alert alert-warning" role="alert">You currently have no reminders!</div>
@@ -22,7 +22,7 @@
         foreach($data['reminders'] as $reminder) { ?>
         <tr>
             <td align="left" style="width:400px"><?php echo $reminder['subject']; ?></td>
-            <td align="right" style="width: 200px;"> <!-- change to the right pixel size -->
+            <td align="right" style="width: 200px;">
                 <a href="/reminders/update_form/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button></a>
                 <a href="/reminders/complete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-success"><i class="fa-solid fa-check"></i></button></a>
                 <a href="/reminders/delete/?id=<?php echo $reminder['id']; ?>"><button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></a>

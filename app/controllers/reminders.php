@@ -11,7 +11,7 @@ class Reminders extends Controller {
   public function completed_reminders() {
     $reminder = $this->model('Reminder');
     $reminders = $reminder->get_completed_reminders();
-    foreach($reminders as &$reminder) { // Convert timezone from database (UTC)
+    foreach($reminders as &$reminder) { // Convert timezone of the timestamps from database (UTC)
       $date_created = new DateTime($reminder['created_at'], new DateTimeZone("UTC"));
       $date_created->setTimezone(new DateTimeZone("America/Toronto"));
       $date_created = $date_created->format('F j, Y g:i a'); // Convert DateTime object to string
@@ -50,6 +50,9 @@ class Reminders extends Controller {
     $id = $_REQUEST['id'];
     $subject = $_REQUEST['subject'];
     $reminder = $this->model('Reminder');
+    if (!($this->is_valid_operation($id))) {
+      header('location: /reminders'); die; 
+    }
     $reminder->edit_reminder($id, $subject);
     header('location: /reminders');
   }
@@ -86,6 +89,5 @@ class Reminders extends Controller {
     }
   }
 }
-
 
 ?>
