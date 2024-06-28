@@ -11,9 +11,16 @@ class Reminders extends Controller {
   public function completed_reminders() {
     $reminder = $this->model('Reminder');
     $reminders = $reminder->get_completed_reminders();
-    foreach($reminders as &$reminder) {
-      $reminder['created_at'] = date('F j, Y g:i a', strtotime($reminder['created_at']));
-      $reminder['completed_at'] = date('F j, Y g:i a', strtotime($reminder['completed_at']));
+    foreach($reminders as &$reminder) { // Convert timezone from database (UTC)
+      $date_created = new DateTime($reminder['created_at'], new DateTimeZone("UTC"));
+      $date_created->setTimezone(new DateTimeZone("America/Toronto"));
+      $date_created = $date_created->format('F j, Y g:i a'); // Convert DateTime object to string
+      $reminder['created_at'] = $date_created;
+                                       
+      $date_completed = new DateTime($reminder['completed_at'], new DateTimeZone("UTC"));
+      $date_completed->setTimezone(new DateTimeZone("America/Toronto"));
+      $date_completed = $date_completed->format('F j, Y g:i a'); // Convert DateTime object to string
+      $reminder['completed_at'] = $date_completed;
     }
     $this->view('reminders/completed', ['reminders' => $reminders]);
   }
@@ -33,13 +40,9 @@ class Reminders extends Controller {
     $id = $_GET['id'];
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);
-    // Check if reminder exists and if it belongs to the user
-    // TO DO - turn this into its own function and call it (since it's repeated multiple times)
-    if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
-      $_SESSION['reminder_error'] = 1;
-      echo "error"; die; // TO DO: need to change this to display error in the view
+    if (!($this->is_valid_operation($id))) {
+      header('location: /reminders'); die; 
     }
-
     $this->view('reminders/update', ['reminder' => $reminder]); // Pass the subject to prepopulate the form
   }
 
@@ -54,35 +57,32 @@ class Reminders extends Controller {
   public function delete() { 
     $id = $_GET['id'];
     $r = $this->model('Reminder');
-    $reminder = $r->get_reminder_by_id($id);                        
-    // Check if reminder exists and if it belongs to the user
-    if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
-      $_SESSION['reminder_error'] = 1;
-      echo "error"; die; // TO DO: need to change this to display error in the view
-    }                       
+    if (!($this->is_valid_operation($id))) {
+      header('location: /reminders'); die; 
+    }           
     $r->mark_reminder_deleted($id);
     header('location: /reminders');                        
   }
 
   public function complete() {
     $id = $_GET['id'];
-    $r = $this->model('Reminder');
-    $reminder = $r->get_reminder_by_id($id);                        
-    $this->is_operation_valid($id);
-    if (isset($_SESSION['reminder_error'])) {
-        echo "error"; die; // TO DO: redirect back to current page and display error message
+    $r = $this->model('Reminder');                      
+    if (!($this->is_valid_operation($id))) {
+      header('location: /reminders'); die; 
     }
     $r->mark_reminder_completed($id);
     header('location: /reminders'); 
   }
 
   // Check if reminder exists and if it belongs to the user performing operation
-  public function is_operation_valid($id) {
+  public function is_valid_operation($id) {
     $r = $this->model('Reminder');
     $reminder = $r->get_reminder_by_id($id);
     if (empty($reminder) || $reminder['user_id'] != $_SESSION['user_id']) {
-      $_SESSION['reminder_error'] = 1;
-      //echo "error"; die; // TO DO: need to change this to display error in the view
+      return false;
+    }
+    else {
+      return true;
     }
   }
 }
